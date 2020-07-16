@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  .container
+    h1.text-center.display-4.mt-3= title
+    form.needs-validation
+      .form-group
+        label(for='username')
+          b.text-danger * 
+          | Username
+        input#usernameRegister.form-control(type='email', aria-describedby='emailHelp')
+        .valid-feedback Great username!
+        #userInvalid.invalid-feedback Username taken
+        small#usernameHelp.form-text.text-muted Username must be unique and at leat 5 characters long
+         
+      .form-group
+        label(for='password2')
+        b.text-danger * 
+        | Password
+        input#password2.form-control(type='password')
+        .valid-feedback Looks good!
+        .invalid-feedback Weak
+        small#passwdHelp.form-text.text-muted Password must be at least 8 characters long and should have at least one special character, one number and one alphabet letter
+        
+        
+         
+      .form-group
+        label(for='repassword')
+        b.text-danger * 
+        | Confirm
+        input#repassword2.form-control.form-rounded(type='password')
+             
+      button#btnRegister.btn.btn-primary(type='button') Register

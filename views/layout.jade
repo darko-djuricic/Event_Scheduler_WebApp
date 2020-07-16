@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/calendar.css')
+    // fix the favicon.ico error
+    link(rel='shortcut icon', href="#")
+  body
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+      a.navbar-brand(href='/') FWW Test
+         
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+         
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+        form#formLogin.form-inline.my-2.my-lg-0(method='GET', action='/logout')
+          button.btn.btn-secondary.my-2.my-sm-0.text-light(type='button', data-toggle="modal", data-target="#exampleModal") Login/Register
+            
+    block content
+
+    #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Sing In
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') &times;
+                 
+          .modal-body
+            form
+              .form-group
+                label(for='username') Username 
+                input#username.form-control(type='text')
+              .form-group
+                label(for='password1') Password
+                input#password1.form-control(type='password', required)
+              .form-group.form-check
+                input#checkRemember.form-check-input(type='checkbox')
+                label.form-check-label(for='exampleCheck1') Remember me
+              #logHelp.text-center
+
+          .modal-footer
+              button#btnSubmit.btn.btn-outline-primary.btn-block(type='submit') Login
+          
+          p.text-center You don't have account? 
+            a(href='/register') Register          
+  
+  script(src="https://code.jquery.com/jquery-3.5.1.js", integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=", crossorigin="anonymous")
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js', integrity='sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI', crossorigin='anonymous')
+  script(type="text/javascript", src="/javascripts/login.js")
+  script(type="text/javascript", src="/javascripts/register.js")
+  script(type="text/javascript", src="/javascripts/users.js")
+  script(type="text/javascript", src="/javascripts/calendar.js")
+  

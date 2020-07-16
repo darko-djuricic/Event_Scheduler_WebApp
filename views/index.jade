@@ -1,0 +1,96 @@
+extends layout
+
+block content
+  h1#titleOfApp.text-center.display-4.mt-3= title
+  h2#loginCheck.text-center.text-danger.mt-3
+  .container.disableCalendar
+  
+    .row
+      .col-12.col-md-8.col-lg-9.mb-0.wrapper.mt-5
+        .container-calendar
+          h3#monthAndYear
+          |           
+          .button-container-calendar
+            button#previous.h5(onclick='previous()') &lsaquo;
+            |               
+            button#next.h5(onclick='next()') &rsaquo;
+          |           
+          |           
+          table#calendar.table-calendar(data-lang='en')
+            thead#thead-month
+            |               
+            tbody#calendar-body
+          |           
+          span.badge.mt-3.badge-info.text-info ...
+          b.mr-3  Recent Events
+          span.badge.mt-3.badge-light.text-light(style='border: 1px dotted #00BCD4') ...
+          b.mr-3  Today
+          span.badge.mt-3.badge-success.text-success ...
+          b  Upcoming Events
+          .footer-container-calendar
+            label(for='month') Jump To: 
+            |               
+            select#month(onchange='jump()')
+              option(value='0') Jan
+              |                   
+              option(value='1') Feb
+              |                   
+              option(value='2') Mar
+              |                   
+              option(value='3') Apr
+              |                   
+              option(value='4') May
+              |                   
+              option(value='5') Jun
+              |                   
+              option(value='6') Jul
+              |                   
+              option(value='7') Aug
+              |                   
+              option(value='8') Sep
+              |                   
+              option(value='9') Oct
+              |                   
+              option(value='10') Nov
+              |                   
+              option(value='11') Dec
+            |               
+            select#year(onchange='jump()')
+
+      .col-12.col-md-4.col-lg-3.border-left.mt-5.p-2
+        h3.text-center.border-bottom.border-primary Today
+        ul#today.mb-5
+        h3.text-center.border-bottom.border-primary.mt-2 Upcoming events
+        #upcomingEvents.scrollable
+    #myEventsSection.mb-5
+      h1.mt-5.mb-5.text-center My Events
+      ul#myEvents.scrollable.mb-5
+    
+      
+      
+
+  #eventModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    .modal-dialog.modal-lg(role='document')
+      .modal-content
+        .modal-header
+          h5#exampleModalLabel.modal-title Event
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+        .modal-body
+          form
+          .form-row
+            label(for='eventTitle')
+            b.text-danger * 
+            | Title
+            input#eventTitle.form-control(type='text', placeholder="e.g. Anna's wedding day")
+            .invalid-feedback
+              |  Title required
+          .form-group
+            label.mt-3(for='eventDesc') Description
+            textarea#eventDesc.form-control(rows='3')
+        .modal-footer
+          #btnDeleteEvent        
+          #btnEventModal
+            button.btn.btn-primary(type='button') Add event          
+
+      
